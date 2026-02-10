@@ -27,7 +27,7 @@ export const Hero = () => {
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src="/videos/L%C4%81zerepil%C4%81cijas%20Nosl%C4%93pumi%20-%20VEED%20Export.mp4" type="video/mp4" />
+          <source src="/videos/showreel.mp4" type="video/mp4" />
         </video>
       )}
 

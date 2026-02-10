@@ -2,14 +2,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Real video files from public/videos/ (converted to .mp4 for browser compatibility)
+// Real video files from public/videos/ (all converted to H.264 .mp4)
 const videos = [
   {
     id: 1,
-    title: "Lāzerepilācijas Noslēpumi",
+    title: "L\u0101zerepil\u0101cijas Nosl\u0113pumi",
     category: "Beauty",
     thumbnail: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg",
-    videoSrc: "/videos/L%C4%81zerepil%C4%81cijas%20Nosl%C4%93pumi%20-%20VEED%20Export.mp4",
+    videoSrc: "/videos/showreel.mp4",
   },
   {
     id: 2,
@@ -57,7 +57,7 @@ export const VideoShowcase = () => {
             Scroll-stopping UGC videos crafted for engagement and conversion.
             <br />
             <span className="text-neutral-600 text-sm italic mt-1 inline-block">
-              ↕ Scroll to explore
+              \u2195 Scroll to explore
             </span>
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ export const VideoShowcase = () => {
                 transition={{ delay: idx * 0.15 }}
                 className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-neutral-900 border border-white/5 cursor-pointer hover:border-brand-500/50 transition-all duration-300"
               >
-                {/* Video element — plays on hover */}
+                {/* Video element \u2014 plays on hover */}
                 <video
                   src={video.videoSrc}
                   muted

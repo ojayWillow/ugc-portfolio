@@ -2,11 +2,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Real video files from public/videos/ (all converted to H.264 .mp4)
+// Real video files from public/videos/ (all H.264 .mp4)
 const videos = [
   {
     id: 1,
-    title: "L\u0101zerepil\u0101cijas Nosl\u0113pumi",
+    title: "Lāzerepilācijas Noslēpumi",
     category: "Beauty",
     thumbnail: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg",
     videoSrc: "/videos/showreel.mp4",
@@ -22,15 +22,36 @@ const videos = [
     id: 3,
     title: "Content Piece #2",
     category: "Lifestyle",
-    thumbnail: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg",
+    thumbnail: "/photos/IMG_1303.JPG",
     videoSrc: "/videos/content-piece-2.mp4",
   },
   {
     id: 4,
     title: "Behind the Scenes",
     category: "BTS",
-    thumbnail: "/photos/IMG_2522.jpeg",
+    thumbnail: "/photos/IMG_1372.JPG",
     videoSrc: "/videos/behind-the-scenes.mp4",
+  },
+  {
+    id: 5,
+    title: "Content Piece #3",
+    category: "Lifestyle",
+    thumbnail: "/photos/IMG_1389.JPG",
+    videoSrc: "/videos/img-1654.mp4",
+  },
+  {
+    id: 6,
+    title: "Content Piece #4",
+    category: "Lifestyle",
+    thumbnail: "/photos/IMG_5909.JPG",
+    videoSrc: "/videos/img-2844.mp4",
+  },
+  {
+    id: 7,
+    title: "Content Piece #5",
+    category: "Lifestyle",
+    thumbnail: "/photos/samanta.JPG",
+    videoSrc: "/videos/img-4311.mp4",
   },
 ];
 
@@ -57,7 +78,7 @@ export const VideoShowcase = () => {
             Scroll-stopping UGC videos crafted for engagement and conversion.
             <br />
             <span className="text-neutral-600 text-sm italic mt-1 inline-block">
-              \u2195 Scroll to explore
+              ↕ Scroll to explore
             </span>
           </p>
         </motion.div>
@@ -74,7 +95,7 @@ export const VideoShowcase = () => {
                 transition={{ delay: idx * 0.15 }}
                 className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-neutral-900 border border-white/5 cursor-pointer hover:border-brand-500/50 transition-all duration-300"
               >
-                {/* Video element \u2014 plays on hover */}
+                {/* Video element — plays on hover */}
                 <video
                   src={video.videoSrc}
                   muted

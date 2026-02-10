@@ -1,0 +1,8 @@
+This directory will contain your assets:
+
+/videos/     — Video files and thumbnails
+/photos/     — Photo gallery images
+/brands/     — Brand logos (SVG preferred)
+/about/      — About section photo
+
+Replace placeholder references in components with real file paths once assets are uploaded.

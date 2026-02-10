@@ -1,10 +1,31 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 
 export const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // If video is already loaded (from cache), set immediately
+    if (video.readyState >= 3) {
+      setVideoLoaded(true);
+      return;
+    }
+
+    const handleLoaded = () => setVideoLoaded(true);
+    video.addEventListener("loadeddata", handleLoaded);
+    video.addEventListener("canplay", handleLoaded);
+
+    return () => {
+      video.removeEventListener("loadeddata", handleLoaded);
+      video.removeEventListener("canplay", handleLoaded);
+    };
+  }, []);
 
   return (
     <section
@@ -28,14 +49,14 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-dot-thick-neutral-800 opacity-40" />
       </div>
 
-      {/* === VIDEO BACKGROUND (always mounted, fades in when loaded) === */}
+      {/* === VIDEO BACKGROUND === */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
-        onLoadedData={() => setVideoLoaded(true)}
         className={`absolute inset-0 w-full h-full object-cover z-[1] transition-opacity duration-1000 ${
           videoLoaded ? "opacity-100" : "opacity-0"
         }`}

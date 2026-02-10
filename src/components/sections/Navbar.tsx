@@ -7,6 +7,7 @@ const navItems = [
   { name: "Home", href: "#hero" },
   { name: "Videos", href: "#videos" },
   { name: "Photos", href: "#photos" },
+  { name: "Services", href: "#services" },
   { name: "Brands", href: "#brands" },
   { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
@@ -16,7 +17,7 @@ export const Navbar = () => {
   const [active, setActive] = useState<string>("Home");
 
   return (
-    <nav className="fixed top-4 inset-x-0 max-w-xl mx-auto z-50">
+    <nav className="fixed top-4 inset-x-0 max-w-2xl mx-auto z-50">
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

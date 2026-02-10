@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { ParallaxScroll } from "@/components/ui/parallax-scroll";
 
-// Real video files from public/videos/
+// Real video files from public/videos/ (converted to .mp4 for browser compatibility)
 const videos = [
   {
     id: 1,
@@ -17,21 +16,21 @@ const videos = [
     title: "Content Piece #1",
     category: "Lifestyle",
     thumbnail: "/photos/IMG_2522.jpeg",
-    videoSrc: "/videos/copy_74230B05-C5BD-4664-BC73-5E7FB88B8701.mov",
+    videoSrc: "/videos/content-piece-1.mp4",
   },
   {
     id: 3,
     title: "Content Piece #2",
     category: "Lifestyle",
     thumbnail: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg",
-    videoSrc: "/videos/copy_AAB8A32E-D0AF-48EA-9561-83F04DBB50FF.mov",
+    videoSrc: "/videos/content-piece-2.mp4",
   },
   {
     id: 4,
     title: "Behind the Scenes",
     category: "BTS",
     thumbnail: "/photos/IMG_2522.jpeg",
-    videoSrc: "/videos/IMG_2296.mov",
+    videoSrc: "/videos/behind-the-scenes.mp4",
   },
 ];
 

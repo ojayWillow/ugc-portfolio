@@ -3,16 +3,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
-// Placeholder photo data — replace with real photos later
+// Real photos from public/photos/
 const photos = [
-  { image: "/photos/photo-1.jpg", title: "Lifestyle Shoot" },
-  { image: "/photos/photo-2.jpg", title: "Product Flat Lay" },
-  { image: "/photos/photo-3.jpg", title: "Brand Campaign" },
-  { image: "/photos/photo-4.jpg", title: "Outdoor Session" },
-  { image: "/photos/photo-5.jpg", title: "Studio Portrait" },
-  { image: "/photos/photo-6.jpg", title: "Food & Beverage" },
-  { image: "/photos/photo-7.jpg", title: "Fashion Editorial" },
-  { image: "/photos/photo-8.jpg", title: "Street Style" },
+  { image: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg", title: "Content Shoot" },
+  { image: "/photos/IMG_2522.jpeg", title: "Lifestyle" },
+  { image: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg", title: "Brand Work" },
+  { image: "/photos/IMG_2522.jpeg", title: "Creative" },
 ];
 
 export const PhotoGallery = () => {
@@ -35,8 +31,8 @@ export const PhotoGallery = () => {
 
       {/* Infinite scrolling photo rows */}
       <div className="space-y-4">
-        <InfiniteMovingCards items={photos.slice(0, 4)} direction="left" speed="slow" />
-        <InfiniteMovingCards items={photos.slice(4)} direction="right" speed="slow" />
+        <InfiniteMovingCards items={photos.slice(0, 2)} direction="left" speed="slow" />
+        <InfiniteMovingCards items={photos.slice(2)} direction="right" speed="slow" />
       </div>
     </section>
   );

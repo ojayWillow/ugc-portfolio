@@ -7,8 +7,8 @@ export const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
 
-  // Set to true once you add a real showreel video at /videos/showreel.mp4
-  const hasShowreel = false;
+  // Showreel is now enabled — using the laser epilation video as the hero reel
+  const hasShowreel = true;
 
   return (
     <section
@@ -28,14 +28,13 @@ export const Hero = () => {
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src="/videos/showreel.mp4" type="video/mp4" />
+          <source src="/videos/L%C4%81zerepil%C4%81cijas%20Nosl%C4%93pumi%20-%20VEED%20Export.mp4" type="video/mp4" />
         </video>
       )}
 
-      {/* === ANIMATED GRADIENT FALLBACK (shows when no video) === */}
-      {(!hasShowreel || !videoLoaded || videoError) && (
+      {/* === ANIMATED GRADIENT FALLBACK (shows while video loads) === */}
+      {(!videoLoaded || videoError) && (
         <div className="absolute inset-0">
-          {/* Animated mesh gradient */}
           <div className="absolute inset-0 bg-black" />
           <div className="absolute inset-0 opacity-30">
             <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-600/40 blur-[120px] animate-pulse" />
@@ -52,10 +51,10 @@ export const Hero = () => {
         </div>
       )}
 
-      {/* === DARK OVERLAY (over video) === */}
+      {/* === DARK OVERLAY === */}
       <div className="absolute inset-0 bg-black/60 z-[1]" />
 
-      {/* === GRADIENT OVERLAYS (cinematic edges) === */}
+      {/* === GRADIENT OVERLAYS === */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-[2]" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 z-[2]" />
 
@@ -71,7 +70,6 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -84,26 +82,22 @@ export const Hero = () => {
             </span>
           </motion.div>
 
-          {/* Name */}
           <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
               [Her Name]
             </span>
           </h1>
 
-          {/* Title */}
           <p className="mt-4 text-xl md:text-2xl text-neutral-400 font-light">
             UGC Content Creator
           </p>
 
-          {/* Tagline */}
           <p className="mt-3 text-sm text-neutral-500 max-w-md mx-auto leading-relaxed">
             Crafting authentic, scroll-stopping content that turns viewers into
             customers. Let&apos;s make your brand unforgettable.
           </p>
         </motion.div>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,11 +117,7 @@ export const Hero = () => {
                 stroke="currentColor"
                 strokeWidth={2}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </a>
@@ -139,7 +129,6 @@ export const Hero = () => {
           </a>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -170,9 +159,7 @@ export const Hero = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-neutral-600 text-[10px] uppercase tracking-widest">
-          Scroll
-        </span>
+        <span className="text-neutral-600 text-[10px] uppercase tracking-widest">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

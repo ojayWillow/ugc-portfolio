@@ -12,12 +12,15 @@ export const About = () => {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-12 items-center"
         >
-          {/* Photo placeholder */}
+          {/* Profile photo — using one of the real photos */}
           <div className="relative">
-            <div className="aspect-[3/4] rounded-2xl bg-gradient-to-br from-brand-600/20 to-brand-900/20 border border-white/5 flex items-center justify-center">
-              <span className="text-white/30 text-sm">Your Photo Here</span>
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-white/5">
+              <img
+                src="/photos/IMG_2522.jpeg"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
-            {/* Decorative element */}
             <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl border border-brand-500/20 -z-10" />
           </div>
 
@@ -44,7 +47,6 @@ export const About = () => {
               </p>
             </div>
 
-            {/* Skills / Services */}
             <div className="mt-8 flex flex-wrap gap-2">
               {["UGC Videos", "Product Photography", "Brand Strategy", "Social Media", "Reels & TikTok", "Unboxing"].map(
                 (skill) => (

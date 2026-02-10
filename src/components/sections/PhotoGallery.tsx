@@ -7,8 +7,11 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 const photos = [
   { image: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg", title: "Content Shoot" },
   { image: "/photos/IMG_2522.jpeg", title: "Lifestyle" },
-  { image: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg", title: "Brand Work" },
-  { image: "/photos/IMG_2522.jpeg", title: "Creative" },
+  { image: "/photos/IMG_1303.JPG", title: "Brand Work" },
+  { image: "/photos/IMG_1372.JPG", title: "Creative" },
+  { image: "/photos/IMG_1389.JPG", title: "Behind the Scenes" },
+  { image: "/photos/IMG_5909.JPG", title: "Portrait" },
+  { image: "/photos/samanta.JPG", title: "Samanta" },
 ];
 
 export const PhotoGallery = () => {
@@ -31,8 +34,8 @@ export const PhotoGallery = () => {
 
       {/* Infinite scrolling photo rows */}
       <div className="space-y-4">
-        <InfiniteMovingCards items={photos.slice(0, 2)} direction="left" speed="slow" />
-        <InfiniteMovingCards items={photos.slice(2)} direction="right" speed="slow" />
+        <InfiniteMovingCards items={photos.slice(0, 4)} direction="left" speed="slow" />
+        <InfiniteMovingCards items={photos.slice(4)} direction="right" speed="slow" />
       </div>
     </section>
   );

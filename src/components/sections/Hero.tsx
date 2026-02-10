@@ -5,57 +5,53 @@ import { Spotlight } from "@/components/ui/spotlight";
 
 export const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
-
-  const hasShowreel = true;
 
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* === VIDEO BACKGROUND === */}
-      {hasShowreel && !videoError && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          onLoadedData={() => setVideoLoaded(true)}
-          onError={() => setVideoError(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            videoLoaded ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <source src="/videos/showreel.mp4" type="video/mp4" />
-        </video>
-      )}
-
-      {/* === ANIMATED GRADIENT FALLBACK === */}
-      {(!videoLoaded || videoError) && (
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-black" />
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-600/40 blur-[120px] animate-pulse" />
-            <div
-              className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/30 blur-[120px] animate-pulse"
-              style={{ animationDelay: "1s" }}
-            />
-            <div
-              className="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-brand-400/20 blur-[100px] animate-pulse"
-              style={{ animationDelay: "2s" }}
-            />
-          </div>
-          <div className="absolute inset-0 bg-dot-thick-neutral-800 opacity-40" />
+      {/* === ANIMATED GRADIENT (always behind, acts as loading state) === */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-black" />
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-600/40 blur-[120px] animate-pulse" />
+          <div
+            className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/30 blur-[120px] animate-pulse"
+            style={{ animationDelay: "1s" }}
+          />
+          <div
+            className="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-brand-400/20 blur-[100px] animate-pulse"
+            style={{ animationDelay: "2s" }}
+          />
         </div>
-      )}
+        <div className="absolute inset-0 bg-dot-thick-neutral-800 opacity-40" />
+      </div>
 
-      <div className="absolute inset-0 bg-black/60 z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-[2]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 z-[2]" />
+      {/* === VIDEO BACKGROUND (always mounted, fades in when loaded) === */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        onLoadedData={() => setVideoLoaded(true)}
+        className={`absolute inset-0 w-full h-full object-cover z-[1] transition-opacity duration-1000 ${
+          videoLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <source src="/videos/showreel.mp4" type="video/mp4" />
+      </video>
+
+      {/* === DARK OVERLAY === */}
+      <div className="absolute inset-0 bg-black/60 z-[2]" />
+
+      {/* === GRADIENT OVERLAYS === */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-[3]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 z-[3]" />
 
       <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20 z-[3]"
+        className="-top-40 left-0 md:left-60 md:-top-20 z-[4]"
         fill="#a855f7"
       />
 

@@ -7,9 +7,9 @@ import { Footer } from "@/components/sections/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "UGC Portfolio | Content Creator",
+  title: "Samanta Kopce | UGC Content Creator",
   description:
-    "Professional UGC content creator portfolio showcasing videos, photos, and brand collaborations.",
+    "Professional UGC content creator portfolio by Samanta Kopce. Authentic, scroll-stopping videos and photos for brands that want to stand out.",
 };
 
 export default function RootLayout({

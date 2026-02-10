@@ -12,12 +12,12 @@ export const About = () => {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-12 items-center"
         >
-          {/* Profile photo — using one of the real photos */}
+          {/* Profile photo */}
           <div className="relative">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-white/5">
               <img
                 src="/photos/IMG_2522.jpeg"
-                alt="Profile"
+                alt="Samanta Kopce"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -27,7 +27,7 @@ export const About = () => {
           {/* Bio */}
           <div>
             <p className="text-brand-400 text-sm uppercase tracking-widest mb-2">About Me</p>
-            <h2 className="text-4xl font-bold text-white mb-6">Hey, I&apos;m [Name] 👋</h2>
+            <h2 className="text-4xl font-bold text-white mb-6">Hey, I&apos;m Samanta 👋</h2>
             <div className="space-y-4 text-neutral-400 leading-relaxed">
               <p>
                 I&apos;m a UGC content creator passionate about crafting authentic,

@@ -7,7 +7,6 @@ export const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
 
-  // Showreel is now enabled — using the laser epilation video as the hero reel
   const hasShowreel = true;
 
   return (
@@ -32,7 +31,7 @@ export const Hero = () => {
         </video>
       )}
 
-      {/* === ANIMATED GRADIENT FALLBACK (shows while video loads) === */}
+      {/* === ANIMATED GRADIENT FALLBACK === */}
       {(!videoLoaded || videoError) && (
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black" />
@@ -51,10 +50,7 @@ export const Hero = () => {
         </div>
       )}
 
-      {/* === DARK OVERLAY === */}
       <div className="absolute inset-0 bg-black/60 z-[1]" />
-
-      {/* === GRADIENT OVERLAYS === */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-[2]" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 z-[2]" />
 
@@ -84,7 +80,7 @@ export const Hero = () => {
 
           <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
-              [Her Name]
+              Samanta Kopce
             </span>
           </h1>
 

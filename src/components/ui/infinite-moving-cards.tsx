@@ -72,9 +72,14 @@ export const InfiniteMovingCards = ({
             key={idx}
             className="w-[300px] h-[200px] relative flex-shrink-0 rounded-2xl overflow-hidden group cursor-pointer"
           >
-            {/* Replace with <Image> once real assets are added */}
-            <div className="w-full h-full bg-gradient-to-br from-brand-600/30 to-brand-900/30 flex items-center justify-center">
-              <span className="text-white/60 text-sm">{item.title}</span>
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            {/* Title overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <span className="text-white text-sm font-medium">{item.title}</span>
             </div>
           </li>
         ))}

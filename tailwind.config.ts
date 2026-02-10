@@ -13,28 +13,28 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          50: "#faf8f5",   // Lightest beige - almost white
-          100: "#f5f0e8",  // Very light beige
-          200: "#ebe3d5",  // Light beige
-          300: "#dfd2ba",  // Soft beige
-          400: "#d4c1a0",  // Medium beige
-          500: "#c9b18a",  // Main beige color
-          600: "#b89968",  // Darker beige with warmth
-          700: "#9d7f4e",  // Rich warm beige
-          800: "#7a6138",  // Deep beige brown
-          900: "#5c4829",  // Darkest beige brown
+          50: "#faf8f5",
+          100: "#f5f0e8",
+          200: "#ebe3d5",
+          300: "#dfd2ba",
+          400: "#d4c1a0",
+          500: "#c9b18a",
+          600: "#b89968",
+          700: "#9d7f4e",
+          800: "#7a6138",
+          900: "#5c4829",
         },
-        accent: {
-          50: "#faf6f3",   // Soft cream
-          100: "#f5ede6",  // Light cream
-          200: "#e8d5c4",  // Warm cream
-          300: "#d9b9a0",  // Peachy beige
-          400: "#c9997a",  // Terracotta light
-          500: "#b87d5c",  // Terracotta
-          600: "#a26548",  // Deep terracotta
-          700: "#87503a",  // Rich terracotta
-          800: "#6b3d2d",  // Dark terracotta
-          900: "#4f2d21",  // Darkest terracotta
+        sage: {
+          50: "#f4f7f4",
+          100: "#e6ede5",
+          200: "#cddccc",
+          300: "#a8c4a6",
+          400: "#7da87a",
+          500: "#5c8d59",
+          600: "#477345",
+          700: "#3a5c38",
+          800: "#314a30",
+          900: "#293d28",
         },
       },
       animation: {

@@ -21,7 +21,7 @@ export const Navbar = () => {
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="flex items-center justify-center space-x-4 rounded-full border border-white/10 bg-black/60 backdrop-blur-md px-6 py-3 shadow-lg"
+        className="flex items-center justify-center space-x-4 rounded-full border border-brand-300/40 bg-brand-50/80 backdrop-blur-md px-6 py-3 shadow-lg"
       >
         {navItems.map((item) => (
           <a
@@ -29,8 +29,8 @@ export const Navbar = () => {
             href={item.href}
             onClick={() => setActive(item.name)}
             className={cn(
-              "text-sm transition-colors hover:text-brand-400",
-              active === item.name ? "text-brand-400" : "text-white/70"
+              "text-sm transition-colors hover:text-sage-600",
+              active === item.name ? "text-sage-600" : "text-brand-800/70"
             )}
           >
             {item.name}

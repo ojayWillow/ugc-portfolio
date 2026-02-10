@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export const About = () => {
   return (
-    <section id="about" className="relative py-24 px-4 bg-black">
+    <section id="about" className="relative py-24 px-4 bg-brand-50">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,21 +14,21 @@ export const About = () => {
         >
           {/* Profile photo */}
           <div className="relative">
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-white/5">
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-brand-300/30">
               <img
                 src="/photos/samanta.JPG"
                 alt="Samanta Kopce"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl border border-brand-500/20 -z-10" />
+            <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl border border-sage-400/20 -z-10" />
           </div>
 
           {/* Bio */}
           <div>
-            <p className="text-brand-400 text-sm uppercase tracking-widest mb-2">About Me</p>
-            <h2 className="text-4xl font-bold text-white mb-6">Hey, I&apos;m Samanta 👋</h2>
-            <div className="space-y-4 text-neutral-400 leading-relaxed">
+            <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">About Me</p>
+            <h2 className="text-4xl font-bold text-brand-900 mb-6">Hey, I&apos;m Samanta 👋</h2>
+            <div className="space-y-4 text-brand-700 leading-relaxed">
               <p>
                 I&apos;m a UGC content creator passionate about crafting authentic,
                 relatable content that resonates with real audiences. With experience
@@ -52,7 +52,7 @@ export const About = () => {
                 (skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 rounded-full text-xs font-medium bg-brand-600/10 text-brand-400 border border-brand-600/20"
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-sage-100 text-sage-700 border border-sage-200"
                   >
                     {skill}
                   </span>

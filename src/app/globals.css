@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
+    --background: 36 33% 96%;
+    --foreground: 30 20% 20%;
   }
 
   body {
-    @apply bg-black text-white antialiased;
+    @apply bg-brand-50 text-brand-900 antialiased;
   }
 }
 
@@ -23,10 +23,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #d4c1a0;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #b89968;
 }

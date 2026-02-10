@@ -11,7 +11,6 @@ export const Hero = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    // If video is already loaded (from cache), set immediately
     if (video.readyState >= 3) {
       setVideoLoaded(true);
       return;
@@ -34,19 +33,19 @@ export const Hero = () => {
     >
       {/* === ANIMATED GRADIENT (always behind, acts as loading state) === */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-black" />
+        <div className="absolute inset-0 bg-brand-100" />
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-600/40 blur-[120px] animate-pulse" />
+          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-400/40 blur-[120px] animate-pulse" />
           <div
-            className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/30 blur-[120px] animate-pulse"
+            className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-sage-300/30 blur-[120px] animate-pulse"
             style={{ animationDelay: "1s" }}
           />
           <div
-            className="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-brand-400/20 blur-[100px] animate-pulse"
+            className="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-brand-300/20 blur-[100px] animate-pulse"
             style={{ animationDelay: "2s" }}
           />
         </div>
-        <div className="absolute inset-0 bg-dot-thick-neutral-800 opacity-40" />
+        <div className="absolute inset-0 bg-dot-thick-brand-300 opacity-40" />
       </div>
 
       {/* === VIDEO BACKGROUND === */}
@@ -64,16 +63,16 @@ export const Hero = () => {
         <source src="/videos/showreel.mp4" type="video/mp4" />
       </video>
 
-      {/* === DARK OVERLAY === */}
-      <div className="absolute inset-0 bg-black/60 z-[2]" />
+      {/* === OVERLAY === */}
+      <div className="absolute inset-0 bg-brand-100/60 z-[2]" />
 
       {/* === GRADIENT OVERLAYS === */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 z-[3]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30 z-[3]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-100 via-transparent to-brand-100/40 z-[3]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-100/30 via-transparent to-brand-100/30 z-[3]" />
 
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20 z-[4]"
-        fill="#a855f7"
+        fill="#7da87a"
       />
 
       {/* === MAIN CONTENT === */}
@@ -87,25 +86,25 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-sm mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sage-500/30 bg-sage-500/10 backdrop-blur-sm mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse" />
-            <span className="text-brand-300 text-xs font-medium uppercase tracking-widest">
+            <span className="w-2 h-2 rounded-full bg-sage-400 animate-pulse" />
+            <span className="text-sage-700 text-xs font-medium uppercase tracking-widest">
               Available for Collaborations
             </span>
           </motion.div>
 
           <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-neutral-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-b from-brand-900 via-brand-800 to-brand-600">
               Samanta Kopce
             </span>
           </h1>
 
-          <p className="mt-4 text-xl md:text-2xl text-neutral-400 font-light">
+          <p className="mt-4 text-xl md:text-2xl text-brand-700 font-light">
             UGC Content Creator
           </p>
 
-          <p className="mt-3 text-sm text-neutral-500 max-w-md mx-auto leading-relaxed">
+          <p className="mt-3 text-sm text-brand-600 max-w-md mx-auto leading-relaxed">
             Crafting authentic, scroll-stopping content that turns viewers into
             customers. Let&apos;s make your brand unforgettable.
           </p>
@@ -119,7 +118,7 @@ export const Hero = () => {
         >
           <a
             href="#videos"
-            className="group relative px-8 py-3.5 rounded-full bg-brand-600 hover:bg-brand-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-500/25"
+            className="group relative px-8 py-3.5 rounded-full bg-sage-600 hover:bg-sage-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sage-500/25"
           >
             <span className="relative z-10 flex items-center gap-2">
               View My Work
@@ -136,7 +135,7 @@ export const Hero = () => {
           </a>
           <a
             href="#contact"
-            className="px-8 py-3.5 rounded-full border border-white/15 hover:border-white/30 text-white/80 hover:text-white font-medium transition-all duration-300 backdrop-blur-sm"
+            className="px-8 py-3.5 rounded-full border border-brand-700/20 hover:border-brand-700/40 text-brand-800 hover:text-brand-900 font-medium transition-all duration-300 backdrop-blur-sm"
           >
             Let&apos;s Collaborate
           </a>
@@ -154,10 +153,10 @@ export const Hero = () => {
             { value: "100+", label: "Content Pieces" },
           ].map((stat) => (
             <div key={stat.label} className="group">
-              <p className="text-3xl font-bold text-white group-hover:text-brand-400 transition-colors">
+              <p className="text-3xl font-bold text-brand-900 group-hover:text-sage-600 transition-colors">
                 {stat.value}
               </p>
-              <p className="text-[11px] text-neutral-500 uppercase tracking-wider mt-1">
+              <p className="text-[11px] text-brand-600 uppercase tracking-wider mt-1">
                 {stat.label}
               </p>
             </div>
@@ -172,13 +171,13 @@ export const Hero = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-neutral-600 text-[10px] uppercase tracking-widest">Scroll</span>
+        <span className="text-brand-500 text-[10px] uppercase tracking-widest">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-neutral-700 flex items-start justify-center p-1.5"
+          className="w-5 h-8 rounded-full border border-brand-400 flex items-start justify-center p-1.5"
         >
-          <div className="w-1 h-1.5 rounded-full bg-brand-400" />
+          <div className="w-1 h-1.5 rounded-full bg-sage-500" />
         </motion.div>
       </motion.div>
     </section>

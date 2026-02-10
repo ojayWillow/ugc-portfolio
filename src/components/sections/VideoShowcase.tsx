@@ -2,149 +2,184 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Real video files from public/videos/ (all H.264 .mp4)
 const videos = [
   {
     id: 1,
     title: "Lāzerepilācijas Noslēpumi",
     category: "Beauty",
-    thumbnail: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg",
     videoSrc: "/videos/showreel.mp4",
   },
   {
     id: 2,
     title: "Content Piece #1",
     category: "Lifestyle",
-    thumbnail: "/photos/IMG_2522.jpeg",
     videoSrc: "/videos/content-piece-1.mp4",
   },
   {
     id: 3,
     title: "Content Piece #2",
     category: "Lifestyle",
-    thumbnail: "/photos/IMG_1303.JPG",
     videoSrc: "/videos/content-piece-2.mp4",
   },
   {
     id: 4,
     title: "Behind the Scenes",
     category: "BTS",
-    thumbnail: "/photos/IMG_1372.JPG",
     videoSrc: "/videos/behind-the-scenes.mp4",
   },
   {
     id: 5,
     title: "Content Piece #3",
     category: "Lifestyle",
-    thumbnail: "/photos/IMG_1389.JPG",
     videoSrc: "/videos/img-1654.mp4",
   },
   {
     id: 6,
     title: "Content Piece #4",
     category: "Lifestyle",
-    thumbnail: "/photos/IMG_5909.JPG",
     videoSrc: "/videos/img-2844.mp4",
   },
   {
     id: 7,
     title: "Content Piece #5",
     category: "Lifestyle",
-    thumbnail: "/photos/samanta.JPG",
     videoSrc: "/videos/img-4311.mp4",
   },
+];
+
+// Staggered row layout: 3 – 2 – 2
+const rows = [
+  { items: videos.slice(0, 3), offset: "mt-0" },
+  { items: videos.slice(3, 5), offset: "mt-8" },
+  { items: videos.slice(5, 7), offset: "mt-4" },
+];
+
+const VideoCard = ({ video, idx, size }: { video: typeof videos[0]; idx: number; size: "tall" | "medium" | "short" }) => {
+  const heights = {
+    tall: "aspect-[9/16]",
+    medium: "aspect-[9/14]",
+    short: "aspect-[9/12]",
+  };
+
+  return (
+    <motion.div
+      key={video.id}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: idx * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`group relative ${heights[size]} rounded-2xl overflow-hidden bg-neutral-900 border border-white/5 cursor-pointer hover:border-brand-500/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.1)]`}
+    >
+      <video
+        src={video.videoSrc}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
+        onMouseLeave={(e) => {
+          const v = e.target as HTMLVideoElement;
+          v.pause();
+          v.currentTime = 0;
+        }}
+      />
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20 z-10 pointer-events-none" />
+
+      {/* Play icon — fades out on hover */}
+      <div className="absolute inset-0 flex items-center justify-center z-20 opacity-100 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none">
+        <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+          <svg className="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Playing indicator */}
+      <div className="absolute top-3 right-3 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-500/80 backdrop-blur-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+          <span className="text-white text-[10px] font-medium">PLAYING</span>
+        </div>
+      </div>
+
+      {/* Category pill */}
+      <div className="absolute top-3 left-3 z-20 pointer-events-none">
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-white/10 text-white/70 backdrop-blur-sm border border-white/10">
+          {video.category}
+        </span>
+      </div>
+
+      {/* Title + subtle line accent */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-5 pointer-events-none">
+        <div className="w-8 h-[2px] bg-brand-500 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <h3 className="text-white font-semibold text-base leading-tight">
+          {video.title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+};
+
+// Assign varied heights per row for visual rhythm
+const rowSizes: ("tall" | "medium" | "short")[][] = [
+  ["tall", "medium", "tall"],
+  ["medium", "tall"],
+  ["tall", "medium"],
 ];
 
 export const VideoShowcase = () => {
   return (
     <section id="videos" className="relative py-24 bg-black overflow-hidden">
-      {/* Background ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-600/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Background ambient glows */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-600/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 px-4"
+          className="text-center mb-20 px-4"
         >
-          <p className="text-brand-400 text-sm uppercase tracking-widest mb-2">
+          <p className="text-brand-400 text-sm uppercase tracking-[0.2em] mb-3">
             Portfolio
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
             Video Content
           </h2>
-          <p className="mt-4 text-neutral-400 max-w-lg mx-auto">
-            Scroll-stopping UGC videos crafted for engagement and conversion.
-            <br />
-            <span className="text-neutral-600 text-sm italic mt-1 inline-block">
-              ↕ Scroll to explore
-            </span>
+          <p className="mt-4 text-neutral-500 max-w-md mx-auto text-sm">
+            Scroll-stopping UGC crafted for engagement and conversion.
           </p>
         </motion.div>
 
-        {/* Video cards with playable previews */}
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {videos.map((video, idx) => (
-              <motion.div
-                key={video.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-neutral-900 border border-white/5 cursor-pointer hover:border-brand-500/50 transition-all duration-300"
-              >
-                {/* Video element — plays on hover */}
-                <video
-                  src={video.videoSrc}
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
-                  onMouseLeave={(e) => {
-                    const v = e.target as HTMLVideoElement;
-                    v.pause();
-                    v.currentTime = 0;
-                  }}
-                />
+        <div className="max-w-6xl mx-auto px-4 space-y-6">
+          {/* Row 1: 3 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+            {rows[0].items.map((video, idx) => (
+              <div key={video.id} className={idx === 1 ? "md:mt-12" : ""}>
+                <VideoCard video={video} idx={idx} size={rowSizes[0][idx]} />
+              </div>
+            ))}
+          </div>
 
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 pointer-events-none" />
+          {/* Row 2: 2 columns, offset center */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:px-16 items-start">
+            {rows[1].items.map((video, idx) => (
+              <div key={video.id} className={idx === 0 ? "md:mt-8" : "md:-mt-4"}>
+                <VideoCard video={video} idx={idx + 3} size={rowSizes[1][idx]} />
+              </div>
+            ))}
+          </div>
 
-                {/* Play icon */}
-                <div className="absolute inset-0 flex items-center justify-center z-20 opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
-                  <div className="w-16 h-16 rounded-full bg-brand-500/20 backdrop-blur-md flex items-center justify-center border border-brand-400/30">
-                    <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* "Playing" indicator on hover */}
-                <div className="absolute top-3 right-3 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-500/80 backdrop-blur-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                    <span className="text-white text-[10px] font-medium">PLAYING</span>
-                  </div>
-                </div>
-
-                {/* Category pill */}
-                <div className="absolute top-3 left-3 z-20 pointer-events-none">
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-brand-500/20 text-brand-300 backdrop-blur-sm border border-brand-500/20">
-                    {video.category}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <div className="absolute bottom-4 left-4 right-4 z-20 pointer-events-none">
-                  <h3 className="text-white font-semibold text-lg leading-tight">
-                    {video.title}
-                  </h3>
-                </div>
-              </motion.div>
+          {/* Row 3: 2 columns, offset opposite */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:px-8 items-start">
+            {rows[2].items.map((video, idx) => (
+              <div key={video.id} className={idx === 1 ? "md:mt-16" : ""}>
+                <VideoCard video={video} idx={idx + 5} size={rowSizes[2][idx]} />
+              </div>
             ))}
           </div>
         </div>

@@ -2,20 +2,27 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "Videos", href: "#videos" },
-  { name: "Photos", href: "#photos" },
-  { name: "Services", href: "#services" },
-  { name: "Brands", href: "#brands" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export const Navbar = () => {
-  const [active, setActive] = useState<string>("Home");
+  const { locale, t, toggleLocale } = useLanguage();
+  const navItems = [
+    { name: t.nav.home, href: "#hero" },
+    { name: t.nav.videos, href: "#videos" },
+    { name: t.nav.photos, href: "#photos" },
+    { name: t.nav.services, href: "#services" },
+    { name: t.nav.brands, href: "#brands" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.contact, href: "#contact" },
+  ];
+
+  const [active, setActive] = useState<string>(t.nav.home);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Update active label when language changes
+  useEffect(() => {
+    setActive(t.nav.home);
+  }, [locale, t.nav.home]);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -40,7 +47,7 @@ export const Navbar = () => {
         >
           {navItems.map((item) => (
             <a
-              key={item.name}
+              key={item.href}
               href={item.href}
               onClick={() => setActive(item.name)}
               className={cn(
@@ -51,11 +58,27 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
+          <button
+            onClick={toggleLocale}
+            className="ml-2 px-2.5 py-1 rounded-full text-xs font-medium border border-brand-300/40 hover:border-sage-400/60 bg-brand-100/60 hover:bg-sage-100/60 text-brand-800 transition-all duration-300"
+            aria-label="Toggle language"
+          >
+            {locale === "lv" ? "EN" : "LV"}
+          </button>
         </motion.div>
       </nav>
 
       {/* Mobile hamburger button */}
-      <div className="fixed top-4 right-4 z-[60] md:hidden">
+      <div className="fixed top-4 right-4 z-[60] md:hidden flex items-center gap-2">
+        <motion.button
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          onClick={toggleLocale}
+          className="w-11 h-11 rounded-full border border-brand-300/40 bg-brand-50/80 backdrop-blur-md shadow-lg flex items-center justify-center text-xs font-medium text-brand-800"
+          aria-label="Toggle language"
+        >
+          {locale === "lv" ? "EN" : "LV"}
+        </motion.button>
         <motion.button
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -99,7 +122,7 @@ export const Navbar = () => {
             <nav className="flex flex-col items-center gap-6">
               {navItems.map((item, idx) => (
                 <motion.a
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

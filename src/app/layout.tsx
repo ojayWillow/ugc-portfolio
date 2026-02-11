@@ -7,6 +7,9 @@ import { LanguageProvider } from "@/lib/language-context";
 
 const inter = Inter({ subsets: ["latin", "latin-ext"] });
 
+const ogImage =
+  "https://res.cloudinary.com/dykocdlgk/image/upload/c_fill,w_1200,h_630,g_auto/samanta_lf4zez.jpg";
+
 export const metadata: Metadata = {
   title: "Samanta Kopce | UGC Satura Veidotāja",
   description:
@@ -19,12 +22,21 @@ export const metadata: Metadata = {
     siteName: "Samanta Kopce",
     locale: "lv_LV",
     type: "website",
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Samanta Kopce – UGC Satura Veidotāja",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Samanta Kopce | UGC Satura Veidotāja",
     description:
       "Veidoju autentisku, aizraujošu saturu, kas pārvērš skatītājus par klientiem. Padarīsim tavu zīmolu neaizmirstamu.",
+    images: [ogImage],
   },
 };
 

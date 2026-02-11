@@ -10,7 +10,22 @@ const inter = Inter({ subsets: ["latin", "latin-ext"] });
 export const metadata: Metadata = {
   title: "Samanta Kopce | UGC Satura Veidotāja",
   description:
-    "Profesionāla UGC satura veidotāja – Samanta Kopce. Autentiski, aizraujoši video un foto zīmoliem, kas vēlas izcelties. Apskatiet manu portfolio un sazinieties, ja vēlaties sadarbību – laba atmosfēra garantēta!",
+    "Veidoju autentisku, aizraujošu saturu, kas pārvērš skatītājus par klientiem. Padarīsim tavu zīmolu neaizmirstamu.",
+  openGraph: {
+    title: "Samanta Kopce | UGC Satura Veidotāja",
+    description:
+      "Veidoju autentisku, aizraujošu saturu, kas pārvērš skatītājus par klientiem. Padarīsim tavu zīmolu neaizmirstamu.",
+    url: "https://samantina.vercel.app",
+    siteName: "Samanta Kopce",
+    locale: "lv_LV",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Samanta Kopce | UGC Satura Veidotāja",
+    description:
+      "Veidoju autentisku, aizraujošu saturu, kas pārvērš skatītājus par klientiem. Padarīsim tavu zīmolu neaizmirstamu.",
+  },
 };
 
 export default function RootLayout({

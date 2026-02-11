@@ -1,13 +1,14 @@
 "use client";
 import React, { useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 const CLOUD = "https://res.cloudinary.com/dykocdlgk";
 
 const videos = [
   {
     id: 1,
-    title: "L\u0101zerepil\u0101cijas Nosl\u0113pumi",
+    title: "Lāzerepilācijas Noslēpumi",
     category: "Beauty",
     videoSrc: `${CLOUD}/video/upload/showreel_yfivfz.mp4`,
   },
@@ -49,7 +50,7 @@ const videos = [
   },
 ];
 
-const VideoCard = ({ video, idx, size }: { video: typeof videos[0]; idx: number; size: "tall" | "medium" | "short" }) => {
+const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: number; size: "tall" | "medium" | "short"; t: Record<string, any> }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -90,6 +91,8 @@ const VideoCard = ({ video, idx, size }: { video: typeof videos[0]; idx: number;
       (v as any).webkitEnterFullscreen();
     }
   }, []);
+
+  const categoryLabel = t.videoShowcase.categories[video.category] || video.category;
 
   return (
     <motion.div
@@ -144,7 +147,7 @@ const VideoCard = ({ video, idx, size }: { video: typeof videos[0]; idx: number;
       }`}>
         <div className="flex items-center gap-1 px-2 py-0.5 md:px-2.5 md:py-1 rounded-full bg-red-500/80 backdrop-blur-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-          <span className="text-white text-[9px] md:text-[10px] font-medium">PLAYING</span>
+          <span className="text-white text-[9px] md:text-[10px] font-medium">{t.videoShowcase.playing}</span>
         </div>
       </div>
 
@@ -180,7 +183,7 @@ const VideoCard = ({ video, idx, size }: { video: typeof videos[0]; idx: number;
       {/* Category pill */}
       <div className="absolute top-2 left-2 md:top-3 md:left-3 z-20 pointer-events-none">
         <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[9px] md:text-[10px] font-semibold uppercase tracking-wider bg-brand-50/20 text-white/80 backdrop-blur-sm border border-brand-50/20">
-          {video.category}
+          {categoryLabel}
         </span>
       </div>
 
@@ -208,6 +211,8 @@ const rows = [
 ];
 
 export const VideoShowcase = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="videos" className="relative py-16 md:py-24 bg-brand-50 overflow-hidden">
       {/* Background ambient glows */}
@@ -222,13 +227,13 @@ export const VideoShowcase = () => {
           className="text-center mb-10 md:mb-20 px-4"
         >
           <p className="text-sage-600 text-sm uppercase tracking-[0.2em] mb-3">
-            Portfolio
+            {t.videoShowcase.subtitle}
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-brand-900">
-            Video Content
+            {t.videoShowcase.title}
           </h2>
           <p className="mt-3 md:mt-4 text-brand-600 max-w-md mx-auto text-sm">
-            Scroll-stopping UGC crafted for engagement and conversion.
+            {t.videoShowcase.description}
           </p>
         </motion.div>
 
@@ -236,7 +241,7 @@ export const VideoShowcase = () => {
         <div className="md:hidden max-w-lg mx-auto px-3">
           <div className="grid grid-cols-2 gap-3">
             {videos.map((video, idx) => (
-              <VideoCard key={video.id} video={video} idx={idx} size="tall" />
+              <VideoCard key={video.id} video={video} idx={idx} size="tall" t={t} />
             ))}
           </div>
         </div>
@@ -246,7 +251,7 @@ export const VideoShowcase = () => {
           <div className="grid grid-cols-3 gap-5 items-start">
             {rows[0].items.map((video, idx) => (
               <div key={video.id} className={idx === 1 ? "mt-12" : ""}>
-                <VideoCard video={video} idx={idx} size={desktopRowSizes[0][idx]} />
+                <VideoCard video={video} idx={idx} size={desktopRowSizes[0][idx]} t={t} />
               </div>
             ))}
           </div>
@@ -254,7 +259,7 @@ export const VideoShowcase = () => {
           <div className="grid grid-cols-2 gap-5 px-16 items-start">
             {rows[1].items.map((video, idx) => (
               <div key={video.id} className={idx === 0 ? "mt-8" : "-mt-4"}>
-                <VideoCard video={video} idx={idx + 3} size={desktopRowSizes[1][idx]} />
+                <VideoCard video={video} idx={idx + 3} size={desktopRowSizes[1][idx]} t={t} />
               </div>
             ))}
           </div>
@@ -262,7 +267,7 @@ export const VideoShowcase = () => {
           <div className="grid grid-cols-2 gap-5 px-8 items-start">
             {rows[2].items.map((video, idx) => (
               <div key={video.id} className={idx === 1 ? "mt-16" : ""}>
-                <VideoCard video={video} idx={idx + 5} size={desktopRowSizes[2][idx]} />
+                <VideoCard video={video} idx={idx + 5} size={desktopRowSizes[2][idx]} t={t} />
               </div>
             ))}
           </div>

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 const proofItems: ProofItem[] = [];
 
@@ -12,6 +13,7 @@ type ProofItem = {
 };
 
 export const SocialProof = () => {
+  const { t } = useLanguage();
   const hasRealProof = proofItems.length > 0;
 
   return (
@@ -24,14 +26,13 @@ export const SocialProof = () => {
           className="text-center mb-16"
         >
           <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">
-            The Receipts
+            {t.socialProof.subtitle}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-brand-900">
-            Real Results
+            {t.socialProof.title}
           </h2>
           <p className="mt-4 text-brand-700 max-w-lg mx-auto">
-            Numbers don&apos;t lie. Here&apos;s what happens when authentic
-            content meets the right audience.
+            {t.socialProof.description}
           </p>
         </motion.div>
 
@@ -75,17 +76,16 @@ export const SocialProof = () => {
               <div className="relative z-10">
                 <div className="text-5xl mb-6">🧾</div>
                 <h3 className="text-2xl font-bold text-brand-900 mb-3">
-                  Every brand story starts somewhere.
+                  {t.socialProof.emptyTitle}
                 </h3>
                 <p className="text-brand-700 leading-relaxed mb-8">
-                  Let&apos;s make your project the next success story on this
-                  wall. The first step? A simple conversation.
+                  {t.socialProof.emptyDescription}
                 </p>
                 <a
                   href="#contact"
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sage-600 hover:bg-sage-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sage-500/25"
                 >
-                  Be the First Story
+                  {t.socialProof.emptyButton}
                   <svg
                     className="w-4 h-4"
                     fill="none"

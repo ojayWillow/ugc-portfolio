@@ -1,53 +1,12 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-
-const services = [
-  {
-    icon: "\uD83C\uDFAC",
-    title: "UGC Videos",
-    description:
-      "Unboxings, reviews, tutorials, GRWM, and day-in-my-life content that feels authentic and drives engagement.",
-    formats: ["TikTok", "Reels", "Shorts"],
-  },
-  {
-    icon: "\uD83D\uDCF8",
-    title: "Product Photography",
-    description:
-      "Lifestyle shots, flat lays, and aesthetic product photos that make your brand look irresistible.",
-    formats: ["Instagram", "Website", "Ads"],
-  },
-  {
-    icon: "\uD83C\uDF99\uFE0F",
-    title: "Voiceovers",
-    description:
-      "Warm, authentic narration for brand videos, ads, and social content that connects with your audience.",
-    formats: ["Ads", "Reels", "Promos"],
-  },
-  {
-    icon: "\u2702\uFE0F",
-    title: "Short-Form Content",
-    description:
-      "Scroll-stopping vertical videos optimized for TikTok, Instagram Reels, and YouTube Shorts.",
-    formats: ["9:16", "15-60s", "Trending"],
-  },
-  {
-    icon: "\uD83D\uDCA1",
-    title: "Creative Strategy",
-    description:
-      "Content concepts, scripting, and creative direction tailored to your brand voice and target audience.",
-    formats: ["Concepts", "Scripts", "Moodboards"],
-  },
-  {
-    icon: "\uD83D\uDCE6",
-    title: "Unboxing & Reviews",
-    description:
-      "Genuine first-impression unboxings and honest product reviews that build trust with real consumers.",
-    formats: ["Organic", "Authentic", "Relatable"],
-  },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export const Services = () => {
+  const { t } = useLanguage();
+  const services = t.services.items;
+
   return (
     <section id="services" className="relative py-16 md:py-24 px-4 bg-brand-100">
       {/* Background ambient glow */}
@@ -61,19 +20,18 @@ export const Services = () => {
           className="text-center mb-10 md:mb-16"
         >
           <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">
-            What I Do
+            {t.services.subtitle}
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-brand-900">
-            Services
+            {t.services.title}
           </h2>
           <p className="mt-3 md:mt-4 text-brand-700 max-w-lg mx-auto text-sm md:text-base">
-            From concept to delivery — everything your brand needs to shine on
-            social media.
+            {t.services.description}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
-          {services.map((service, idx) => (
+          {services.map((service: any, idx: number) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
@@ -94,7 +52,7 @@ export const Services = () => {
                   {service.description}
                 </p>
                 <div className="mt-2 md:mt-4 flex flex-wrap gap-1 md:gap-2">
-                  {service.formats.map((format) => (
+                  {service.formats.map((format: string) => (
                     <span
                       key={format}
                       className="px-1.5 md:px-2.5 py-0.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-wider bg-brand-200/50 text-brand-700 border border-brand-300/30"
@@ -116,14 +74,13 @@ export const Services = () => {
           className="text-center mt-10 md:mt-16"
         >
           <p className="text-brand-600 text-xs md:text-sm mb-4">
-            Every project is unique — let&apos;s find the perfect package for
-            your brand.
+            {t.services.cta}
           </p>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-3.5 rounded-full bg-sage-600 hover:bg-sage-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sage-500/25 text-sm md:text-base"
           >
-            Let&apos;s Discuss Your Project
+            {t.services.ctaButton}
             <svg
               className="w-4 h-4"
               fill="none"

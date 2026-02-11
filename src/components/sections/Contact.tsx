@@ -2,8 +2,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
+import { useLanguage } from "@/lib/language-context";
 
 export const Contact = () => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -17,13 +20,12 @@ export const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">Get In Touch</p>
+          <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">{t.contact.subtitle}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-brand-900 mb-4">
-            Let&apos;s Create Together
+            {t.contact.title}
           </h2>
           <p className="text-brand-700 mb-12">
-            Have a project in mind? I&apos;d love to hear about it. Drop me a message
-            and let&apos;s make some amazing content.
+            {t.contact.description}
           </p>
         </motion.div>
 
@@ -36,35 +38,35 @@ export const Contact = () => {
         >
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="text-sm text-brand-700 mb-1 block">Name</label>
+              <label className="text-sm text-brand-700 mb-1 block">{t.contact.nameLabel}</label>
               <input
                 type="text"
-                placeholder="Your name"
+                placeholder={t.contact.namePlaceholder}
                 className="w-full px-4 py-3 rounded-lg bg-brand-50 border border-brand-300/50 text-brand-900 placeholder:text-brand-400 focus:outline-none focus:border-sage-500 transition-colors"
               />
             </div>
             <div>
-              <label className="text-sm text-brand-700 mb-1 block">Email</label>
+              <label className="text-sm text-brand-700 mb-1 block">{t.contact.emailLabel}</label>
               <input
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t.contact.emailPlaceholder}
                 className="w-full px-4 py-3 rounded-lg bg-brand-50 border border-brand-300/50 text-brand-900 placeholder:text-brand-400 focus:outline-none focus:border-sage-500 transition-colors"
               />
             </div>
           </div>
           <div>
-            <label className="text-sm text-brand-700 mb-1 block">Brand / Company</label>
+            <label className="text-sm text-brand-700 mb-1 block">{t.contact.brandLabel}</label>
             <input
               type="text"
-              placeholder="Your brand name"
+              placeholder={t.contact.brandPlaceholder}
               className="w-full px-4 py-3 rounded-lg bg-brand-50 border border-brand-300/50 text-brand-900 placeholder:text-brand-400 focus:outline-none focus:border-sage-500 transition-colors"
             />
           </div>
           <div>
-            <label className="text-sm text-brand-700 mb-1 block">Project Details</label>
+            <label className="text-sm text-brand-700 mb-1 block">{t.contact.detailsLabel}</label>
             <textarea
               rows={5}
-              placeholder="Tell me about your project, budget, and timeline..."
+              placeholder={t.contact.detailsPlaceholder}
               className="w-full px-4 py-3 rounded-lg bg-brand-50 border border-brand-300/50 text-brand-900 placeholder:text-brand-400 focus:outline-none focus:border-sage-500 transition-colors resize-none"
             />
           </div>
@@ -72,18 +74,13 @@ export const Contact = () => {
             type="submit"
             className="w-full py-3 rounded-lg bg-sage-600 hover:bg-sage-500 text-white font-medium transition-colors"
           >
-            Send Message ✨
+            {t.contact.sendButton}
           </button>
         </motion.form>
 
         {/* Social links */}
         <div className="mt-12 flex items-center justify-center gap-6">
-          {[
-            { name: "TikTok", href: "#" },
-            { name: "Instagram", href: "#" },
-            { name: "YouTube", href: "#" },
-            { name: "Email", href: "mailto:hello@example.com" },
-          ].map((social) => (
+          {t.contact.socials.map((social: { name: string; href: string }) => (
             <a
               key={social.name}
               href={social.href}

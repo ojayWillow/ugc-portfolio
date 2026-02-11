@@ -2,10 +2,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
+import { useLanguage } from "@/lib/language-context";
 
 const CLOUD = "https://res.cloudinary.com/dykocdlgk";
 
 export const Hero = () => {
+  const { t } = useLanguage();
   const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -92,23 +94,22 @@ export const Hero = () => {
           >
             <span className="w-2 h-2 rounded-full bg-sage-400 animate-pulse" />
             <span className="text-sage-700 text-[10px] md:text-xs font-medium uppercase tracking-widest">
-              Available for Collaborations
+              {t.hero.badge}
             </span>
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-brand-900 via-brand-800 to-brand-600">
-              Samanta Kopce
+              {t.hero.name}
             </span>
           </h1>
 
           <p className="mt-3 md:mt-4 text-lg md:text-xl lg:text-2xl text-brand-700 font-light">
-            UGC Content Creator
+            {t.hero.role}
           </p>
 
           <p className="mt-2 md:mt-3 text-xs md:text-sm text-brand-600 max-w-md mx-auto leading-relaxed px-4 md:px-0">
-            Crafting authentic, scroll-stopping content that turns viewers into
-            customers. Let&apos;s make your brand unforgettable.
+            {t.hero.description}
           </p>
         </motion.div>
 
@@ -123,7 +124,7 @@ export const Hero = () => {
             className="group relative px-6 md:px-8 py-3 md:py-3.5 rounded-full bg-sage-600 hover:bg-sage-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sage-500/25 text-sm md:text-base"
           >
             <span className="relative z-10 flex items-center gap-2">
-              View My Work
+              {t.hero.viewWork}
               <svg
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -139,7 +140,7 @@ export const Hero = () => {
             href="#contact"
             className="px-6 md:px-8 py-3 md:py-3.5 rounded-full border border-brand-700/20 hover:border-brand-700/40 text-brand-800 hover:text-brand-900 font-medium transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
           >
-            Let&apos;s Collaborate
+            {t.hero.collaborate}
           </a>
         </motion.div>
 
@@ -149,11 +150,7 @@ export const Hero = () => {
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-14 md:mt-20 grid grid-cols-3 gap-6 md:gap-8 max-w-sm md:max-w-md mx-auto"
         >
-          {[
-            { value: "50+", label: "Brand Collabs" },
-            { value: "2M+", label: "Views Generated" },
-            { value: "100+", label: "Content Pieces" },
-          ].map((stat) => (
+          {t.hero.stats.map((stat: { value: string; label: string }) => (
             <div key={stat.label} className="group">
               <p className="text-2xl md:text-3xl font-bold text-brand-900 group-hover:text-sage-600 transition-colors">
                 {stat.value}
@@ -173,7 +170,7 @@ export const Hero = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-brand-500 text-[10px] uppercase tracking-widest">Scroll</span>
+        <span className="text-brand-500 text-[10px] uppercase tracking-widest">{t.hero.scroll}</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

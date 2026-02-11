@@ -3,8 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
+import { LanguageProvider } from "@/lib/language-context";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin", "latin-ext"] });
 
 export const metadata: Metadata = {
   title: "Samanta Kopce | UGC Satura Veidotāja",
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="lv" className="dark">
       <body className={`${inter.className} overflow-x-hidden`}>
-        <Navbar />
-        <main className="overflow-x-hidden">{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="overflow-x-hidden">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

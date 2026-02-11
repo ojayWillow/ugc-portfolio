@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { useLanguage } from "@/lib/language-context";
 
 const CLOUD = "https://res.cloudinary.com/dykocdlgk";
 
@@ -16,6 +17,13 @@ const photos = [
 ];
 
 export const PhotoGallery = () => {
+  const { t } = useLanguage();
+
+  const translatedPhotos = photos.map((photo) => ({
+    ...photo,
+    title: t.photoGallery.photoTitles[photo.title] || photo.title,
+  }));
+
   return (
     <section id="photos" className="relative py-16 md:py-24 bg-brand-100 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
@@ -25,17 +33,17 @@ export const PhotoGallery = () => {
           viewport={{ once: true }}
           className="text-center mb-10 md:mb-16"
         >
-          <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">Gallery</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-brand-900">Photo Content</h2>
+          <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">{t.photoGallery.subtitle}</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-brand-900">{t.photoGallery.title}</h2>
           <p className="mt-3 md:mt-4 text-brand-700 max-w-lg mx-auto text-sm md:text-base">
-            High-quality visuals that tell your brand&apos;s story.
+            {t.photoGallery.description}
           </p>
         </motion.div>
       </div>
 
       <div className="space-y-3 md:space-y-4">
-        <InfiniteMovingCards items={photos.slice(0, 4)} direction="left" speed="slow" />
-        <InfiniteMovingCards items={photos.slice(4)} direction="right" speed="slow" />
+        <InfiniteMovingCards items={translatedPhotos.slice(0, 4)} direction="left" speed="slow" />
+        <InfiniteMovingCards items={translatedPhotos.slice(4)} direction="right" speed="slow" />
       </div>
     </section>
   );

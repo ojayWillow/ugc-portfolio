@@ -62,7 +62,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          "flex min-w-full shrink-0 gap-3 md:gap-4 py-2 md:py-4 w-max flex-nowrap",
           start && (direction === "left" ? "animate-scroll-left" : "animate-scroll-right"),
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -70,7 +70,7 @@ export const InfiniteMovingCards = ({
         {items.map((item, idx) => (
           <li
             key={idx}
-            className="w-[300px] h-[200px] relative flex-shrink-0 rounded-2xl overflow-hidden group cursor-pointer"
+            className="w-[200px] h-[140px] md:w-[300px] md:h-[200px] relative flex-shrink-0 rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer"
           >
             <img
               src={item.image}
@@ -78,8 +78,8 @@ export const InfiniteMovingCards = ({
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             {/* Title overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <span className="text-white text-sm font-medium">{item.title}</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 md:p-4">
+              <span className="text-white text-xs md:text-sm font-medium">{item.title}</span>
             </div>
           </li>
         ))}

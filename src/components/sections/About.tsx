@@ -6,16 +6,16 @@ const CLOUD = "https://res.cloudinary.com/dykocdlgk";
 
 export const About = () => {
   return (
-    <section id="about" className="relative py-24 px-4 bg-brand-50">
+    <section id="about" className="relative py-16 md:py-24 px-4 bg-brand-50">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-12 items-center"
+          className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
         >
           {/* Profile photo */}
-          <div className="relative">
+          <div className="relative max-w-[280px] md:max-w-none mx-auto md:mx-0">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-brand-300/30">
               <img
                 src={`${CLOUD}/image/upload/samanta_lf4zez.jpg`}
@@ -29,8 +29,8 @@ export const About = () => {
           {/* Bio */}
           <div>
             <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">About Me</p>
-            <h2 className="text-4xl font-bold text-brand-900 mb-6">Hey, I&apos;m Samanta 👋</h2>
-            <div className="space-y-4 text-brand-700 leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-900 mb-4 md:mb-6">Hey, I&apos;m Samanta \uD83D\uDC4B</h2>
+            <div className="space-y-3 md:space-y-4 text-brand-700 leading-relaxed text-sm md:text-base">
               <p>
                 I&apos;m a UGC content creator passionate about crafting authentic,
                 relatable content that resonates with real audiences. With experience
@@ -42,19 +42,19 @@ export const About = () => {
                 increase their engagement and conversion rates. I believe in
                 creating content that feels organic, not scripted.
               </p>
-              <p>
+              <p className="hidden md:block">
                 When I&apos;m not creating, you&apos;ll find me exploring new coffee
                 shops, experimenting with photography, or planning my next creative
                 project.
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="mt-6 md:mt-8 flex flex-wrap gap-2">
               {["UGC Videos", "Product Photography", "Brand Strategy", "Social Media", "Reels & TikTok", "Unboxing"].map(
                 (skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 rounded-full text-xs font-medium bg-sage-100 text-sage-700 border border-sage-200"
+                    className="px-2.5 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-medium bg-sage-100 text-sage-700 border border-sage-200"
                   >
                     {skill}
                   </span>

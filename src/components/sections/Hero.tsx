@@ -37,13 +37,13 @@ export const Hero = () => {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-brand-100" />
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-brand-400/40 blur-[120px] animate-pulse" />
+          <div className="absolute top-[-20%] left-[-10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-brand-400/40 blur-[120px] animate-pulse" />
           <div
-            className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-sage-300/30 blur-[120px] animate-pulse"
+            className="absolute bottom-[-10%] right-[-10%] w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full bg-sage-300/30 blur-[120px] animate-pulse"
             style={{ animationDelay: "1s" }}
           />
           <div
-            className="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-brand-300/20 blur-[100px] animate-pulse"
+            className="absolute top-[30%] right-[20%] w-[150px] md:w-[300px] h-[150px] md:h-[300px] rounded-full bg-brand-300/20 blur-[100px] animate-pulse"
             style={{ animationDelay: "2s" }}
           />
         </div>
@@ -88,25 +88,25 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sage-500/30 bg-sage-500/10 backdrop-blur-sm mb-6"
+            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border border-sage-500/30 bg-sage-500/10 backdrop-blur-sm mb-4 md:mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-sage-400 animate-pulse" />
-            <span className="text-sage-700 text-xs font-medium uppercase tracking-widest">
+            <span className="text-sage-700 text-[10px] md:text-xs font-medium uppercase tracking-widest">
               Available for Collaborations
             </span>
           </motion.div>
 
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-brand-900 via-brand-800 to-brand-600">
               Samanta Kopce
             </span>
           </h1>
 
-          <p className="mt-4 text-xl md:text-2xl text-brand-700 font-light">
+          <p className="mt-3 md:mt-4 text-lg md:text-xl lg:text-2xl text-brand-700 font-light">
             UGC Content Creator
           </p>
 
-          <p className="mt-3 text-sm text-brand-600 max-w-md mx-auto leading-relaxed">
+          <p className="mt-2 md:mt-3 text-xs md:text-sm text-brand-600 max-w-md mx-auto leading-relaxed px-4 md:px-0">
             Crafting authentic, scroll-stopping content that turns viewers into
             customers. Let&apos;s make your brand unforgettable.
           </p>
@@ -116,11 +116,11 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4"
         >
           <a
             href="#videos"
-            className="group relative px-8 py-3.5 rounded-full bg-sage-600 hover:bg-sage-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sage-500/25"
+            className="group relative px-6 md:px-8 py-3 md:py-3.5 rounded-full bg-sage-600 hover:bg-sage-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-sage-500/25 text-sm md:text-base"
           >
             <span className="relative z-10 flex items-center gap-2">
               View My Work
@@ -137,7 +137,7 @@ export const Hero = () => {
           </a>
           <a
             href="#contact"
-            className="px-8 py-3.5 rounded-full border border-brand-700/20 hover:border-brand-700/40 text-brand-800 hover:text-brand-900 font-medium transition-all duration-300 backdrop-blur-sm"
+            className="px-6 md:px-8 py-3 md:py-3.5 rounded-full border border-brand-700/20 hover:border-brand-700/40 text-brand-800 hover:text-brand-900 font-medium transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
           >
             Let&apos;s Collaborate
           </a>
@@ -147,7 +147,7 @@ export const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-20 grid grid-cols-3 gap-8 max-w-md mx-auto"
+          className="mt-14 md:mt-20 grid grid-cols-3 gap-6 md:gap-8 max-w-sm md:max-w-md mx-auto"
         >
           {[
             { value: "50+", label: "Brand Collabs" },
@@ -155,10 +155,10 @@ export const Hero = () => {
             { value: "100+", label: "Content Pieces" },
           ].map((stat) => (
             <div key={stat.label} className="group">
-              <p className="text-3xl font-bold text-brand-900 group-hover:text-sage-600 transition-colors">
+              <p className="text-2xl md:text-3xl font-bold text-brand-900 group-hover:text-sage-600 transition-colors">
                 {stat.value}
               </p>
-              <p className="text-[11px] text-brand-600 uppercase tracking-wider mt-1">
+              <p className="text-[9px] md:text-[11px] text-brand-600 uppercase tracking-wider mt-1">
                 {stat.label}
               </p>
             </div>
@@ -171,7 +171,7 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-brand-500 text-[10px] uppercase tracking-widest">Scroll</span>
         <motion.div

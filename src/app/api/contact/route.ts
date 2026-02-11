@@ -13,10 +13,22 @@ export async function POST(req: NextRequest) {
     }
 
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
 
-    if (!botToken || !chatId) {
-      console.error("Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID env vars");
+    if (!botToken) {
+      console.error("Missing TELEGRAM_BOT_TOKEN env var");
+      return NextResponse.json(
+        { error: "Server configuration error." },
+        { status: 500 }
+      );
+    }
+
+    // Collect all chat IDs from environment variables
+    const chatIds: string[] = [];
+    if (process.env.TELEGRAM_CHAT_ID) chatIds.push(process.env.TELEGRAM_CHAT_ID);
+    if (process.env.TELEGRAM_CHAT_ID_2) chatIds.push(process.env.TELEGRAM_CHAT_ID_2);
+
+    if (chatIds.length === 0) {
+      console.error("No TELEGRAM_CHAT_ID env vars configured");
       return NextResponse.json(
         { error: "Server configuration error." },
         { status: 500 }
@@ -37,23 +49,28 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join("\n");
 
-    // Send to Telegram Bot API
-    const telegramRes = await fetch(
-      `https://api.telegram.org/bot${botToken}/sendMessage`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-          parse_mode: "Markdown",
-        }),
-      }
+    // Send to all recipients simultaneously
+    const results = await Promise.allSettled(
+      chatIds.map((chatId) =>
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: "Markdown",
+          }),
+        })
+      )
     );
 
-    if (!telegramRes.ok) {
-      const errorData = await telegramRes.json();
-      console.error("Telegram API error:", errorData);
+    // Check if at least one message was sent successfully
+    const anySuccess = results.some(
+      (result) => result.status === "fulfilled" && result.value.ok
+    );
+
+    if (!anySuccess) {
+      console.error("All Telegram sends failed:", results);
       return NextResponse.json(
         { error: "Failed to send message." },
         { status: 500 }

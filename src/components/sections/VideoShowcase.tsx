@@ -11,42 +11,49 @@ const videos = [
     title: "Lāzerepilācijas Noslēpumi",
     category: "Beauty",
     videoSrc: `${CLOUD}/video/upload/showreel_yfivfz.mp4`,
+    poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/showreel_yfivfz.jpg`,
   },
   {
     id: 2,
     title: "Content Piece #1",
     category: "Lifestyle",
     videoSrc: `${CLOUD}/video/upload/content-piece-1_cz8lrc.mp4`,
+    poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/content-piece-1_cz8lrc.jpg`,
   },
   {
     id: 3,
     title: "Content Piece #2",
     category: "Lifestyle",
     videoSrc: `${CLOUD}/video/upload/content-piece-2_t7uutw.mp4`,
+    poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/content-piece-2_t7uutw.jpg`,
   },
   {
     id: 4,
     title: "Behind the Scenes",
     category: "BTS",
     videoSrc: `${CLOUD}/video/upload/behind-the-scenes_setjyx.mp4`,
+    poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/behind-the-scenes_setjyx.jpg`,
   },
   {
     id: 5,
     title: "Content Piece #3",
     category: "Lifestyle",
     videoSrc: `${CLOUD}/video/upload/img-1654_ppz5k6.mp4`,
+    poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/img-1654_ppz5k6.jpg`,
   },
   {
     id: 6,
     title: "Content Piece #4",
     category: "Lifestyle",
     videoSrc: `${CLOUD}/video/upload/img-2844_b5qzjs.mp4`,
+    poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/img-2844_b5qzjs.jpg`,
   },
   {
     id: 7,
     title: "Content Piece #5",
     category: "Lifestyle",
     videoSrc: `${CLOUD}/video/upload/img-4311_xcimbv.mp4`,
+    poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/img-4311_xcimbv.jpg`,
   },
 ];
 
@@ -100,16 +107,26 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: idx * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative ${heights[size]} md:${heights[size]} rounded-2xl overflow-hidden bg-brand-200 border border-brand-300/30 cursor-pointer hover:border-sage-400/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(125,168,122,0.1)]`}
+      className={`group relative ${heights[size]} md:${heights[size]} rounded-2xl overflow-hidden bg-brand-900 border border-brand-300/30 cursor-pointer hover:border-sage-400/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(125,168,122,0.1)]`}
       onClick={togglePlay}
     >
+      {/* Poster thumbnail image */}
+      <img
+        src={video.poster}
+        alt={video.title}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+          isPlaying ? "opacity-0" : "opacity-100"
+        }`}
+      />
+
       <video
         ref={videoRef}
         src={video.videoSrc}
         muted={isMuted}
         loop
         playsInline
-        preload="metadata"
+        preload="none"
+        poster={video.poster}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         onMouseEnter={(e) => {
           if (window.innerWidth >= 768) {
@@ -127,8 +144,8 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
         }}
       />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-900/70 via-brand-900/10 to-brand-900/10 z-10 pointer-events-none" />
+      {/* Gradient overlay — lighter for better thumbnail visibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-brand-900/5 z-10 pointer-events-none" />
 
       {/* Play/Pause icon — center */}
       <div className={`absolute inset-0 flex items-center justify-center z-20 transition-opacity duration-500 pointer-events-none ${
@@ -182,7 +199,7 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
 
       {/* Category pill */}
       <div className="absolute top-2 left-2 md:top-3 md:left-3 z-20 pointer-events-none">
-        <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[9px] md:text-[10px] font-semibold uppercase tracking-wider bg-brand-50/20 text-white/80 backdrop-blur-sm border border-brand-50/20">
+        <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[9px] md:text-[10px] font-semibold uppercase tracking-wider bg-brand-50/20 text-white/90 backdrop-blur-sm border border-brand-50/20">
           {categoryLabel}
         </span>
       </div>
@@ -246,8 +263,8 @@ export const VideoShowcase = () => {
           </div>
         </div>
 
-        {/* Desktop: staggered layout */}
-        <div className="hidden md:block max-w-6xl mx-auto px-4 space-y-6">
+        {/* Desktop: staggered layout — tighter padding */}
+        <div className="hidden md:block max-w-5xl mx-auto px-4 space-y-5">
           <div className="grid grid-cols-3 gap-5 items-start">
             {rows[0].items.map((video, idx) => (
               <div key={video.id} className={idx === 1 ? "mt-12" : ""}>
@@ -256,7 +273,7 @@ export const VideoShowcase = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-5 px-16 items-start">
+          <div className="grid grid-cols-2 gap-5 px-8 items-start">
             {rows[1].items.map((video, idx) => (
               <div key={video.id} className={idx === 0 ? "mt-8" : "-mt-4"}>
                 <VideoCard video={video} idx={idx + 3} size={desktopRowSizes[1][idx]} t={t} />
@@ -264,7 +281,7 @@ export const VideoShowcase = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-5 px-8 items-start">
+          <div className="grid grid-cols-2 gap-5 px-4 items-start">
             {rows[2].items.map((video, idx) => (
               <div key={video.id} className={idx === 1 ? "mt-16" : ""}>
                 <VideoCard video={video} idx={idx + 5} size={desktopRowSizes[2][idx]} t={t} />

@@ -18,7 +18,7 @@ export const About = () => {
           <div className="relative">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-brand-300/30">
               <img
-                src={`${CLOUD}/image/upload/image/samanta.JPG`}
+                src={`${CLOUD}/image/upload/samanta_lf4zez.jpg`}
                 alt="Samanta Kopce"
                 className="w-full h-full object-cover"
               />

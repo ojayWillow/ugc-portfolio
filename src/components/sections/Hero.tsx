@@ -62,7 +62,7 @@ export const Hero = () => {
           videoLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <source src={`${CLOUD}/video/upload/video/showreel.mp4`} type="video/mp4" />
+        <source src={`${CLOUD}/video/upload/showreel_yfivfz.mp4`} type="video/mp4" />
       </video>
 
       {/* === OVERLAY === */}

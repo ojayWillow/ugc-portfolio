@@ -6,13 +6,13 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 const CLOUD = "https://res.cloudinary.com/dykocdlgk";
 
 const photos = [
-  { image: `${CLOUD}/image/upload/image/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg`, title: "Content Shoot" },
-  { image: `${CLOUD}/image/upload/image/IMG_2522.jpeg`, title: "Lifestyle" },
-  { image: `${CLOUD}/image/upload/image/IMG_1303.JPG`, title: "Brand Work" },
-  { image: `${CLOUD}/image/upload/image/IMG_1372.JPG`, title: "Creative" },
-  { image: `${CLOUD}/image/upload/image/IMG_1389.JPG`, title: "Behind the Scenes" },
-  { image: `${CLOUD}/image/upload/image/IMG_5909.JPG`, title: "Portrait" },
-  { image: `${CLOUD}/image/upload/image/samanta.JPG`, title: "Samanta" },
+  { image: `${CLOUD}/image/upload/613531F5-0672-4099-9CFD-BBD0839F1379_p71vaf.jpg`, title: "Content Shoot" },
+  { image: `${CLOUD}/image/upload/IMG_2522_aqb5z9.jpg`, title: "Lifestyle" },
+  { image: `${CLOUD}/image/upload/IMG_1303_qay4ej.jpg`, title: "Brand Work" },
+  { image: `${CLOUD}/image/upload/IMG_1372_uvtv6b.jpg`, title: "Creative" },
+  { image: `${CLOUD}/image/upload/IMG_1389_h6qk2g.jpg`, title: "Behind the Scenes" },
+  { image: `${CLOUD}/image/upload/IMG_5909_obnzle.jpg`, title: "Portrait" },
+  { image: `${CLOUD}/image/upload/samanta_lf4zez.jpg`, title: "Samanta" },
 ];
 
 export const PhotoGallery = () => {

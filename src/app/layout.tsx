@@ -7,16 +7,16 @@ import { Footer } from "@/components/sections/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Samanta Kopce | UGC Content Creator",
+  title: "Samanta Kopce | UGC Satura Veidotāja",
   description:
-    "Professional UGC content creator portfolio by Samanta Kopce. Authentic, scroll-stopping videos and photos for brands that want to stand out.",
+    "Profesionāla UGC satura veidotāja – Samanta Kopce. Autentiski, aizraujoši video un foto zīmoliem, kas vēlas izcelties. Apskatiet manu portfolio un sazinieties, ja vēlaties sadarbību – laba atmosfēra garantēta!",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="lv" className="dark">
       <body className={`${inter.className} overflow-x-hidden`}>
         <Navbar />
         <main className="overflow-x-hidden">{children}</main>

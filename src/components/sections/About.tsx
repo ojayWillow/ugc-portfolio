@@ -2,6 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const CLOUD = "https://res.cloudinary.com/dykocdlgk";
+
 export const About = () => {
   return (
     <section id="about" className="relative py-24 px-4 bg-brand-50">
@@ -16,7 +18,7 @@ export const About = () => {
           <div className="relative">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-brand-300/30">
               <img
-                src="/photos/samanta.JPG"
+                src={`${CLOUD}/image/upload/image/samanta.JPG`}
                 alt="Samanta Kopce"
                 className="w-full h-full object-cover"
               />

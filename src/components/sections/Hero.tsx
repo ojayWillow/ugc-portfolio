@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 
+const CLOUD = "https://res.cloudinary.com/dykocdlgk";
+
 export const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -60,7 +62,7 @@ export const Hero = () => {
           videoLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <source src="/videos/showreel.mp4" type="video/mp4" />
+        <source src={`${CLOUD}/video/upload/video/showreel.mp4`} type="video/mp4" />
       </video>
 
       {/* === OVERLAY === */}

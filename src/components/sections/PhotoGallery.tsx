@@ -3,14 +3,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
+const CLOUD = "https://res.cloudinary.com/dykocdlgk";
+
 const photos = [
-  { image: "/photos/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg", title: "Content Shoot" },
-  { image: "/photos/IMG_2522.jpeg", title: "Lifestyle" },
-  { image: "/photos/IMG_1303.JPG", title: "Brand Work" },
-  { image: "/photos/IMG_1372.JPG", title: "Creative" },
-  { image: "/photos/IMG_1389.JPG", title: "Behind the Scenes" },
-  { image: "/photos/IMG_5909.JPG", title: "Portrait" },
-  { image: "/photos/samanta.JPG", title: "Samanta" },
+  { image: `${CLOUD}/image/upload/image/613531F5-0672-4099-9CFD-BBD0839F1379.jpeg`, title: "Content Shoot" },
+  { image: `${CLOUD}/image/upload/image/IMG_2522.jpeg`, title: "Lifestyle" },
+  { image: `${CLOUD}/image/upload/image/IMG_1303.JPG`, title: "Brand Work" },
+  { image: `${CLOUD}/image/upload/image/IMG_1372.JPG`, title: "Creative" },
+  { image: `${CLOUD}/image/upload/image/IMG_1389.JPG`, title: "Behind the Scenes" },
+  { image: `${CLOUD}/image/upload/image/IMG_5909.JPG`, title: "Portrait" },
+  { image: `${CLOUD}/image/upload/image/samanta.JPG`, title: "Samanta" },
 ];
 
 export const PhotoGallery = () => {

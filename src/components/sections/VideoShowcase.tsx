@@ -2,48 +2,50 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const CLOUD = "https://res.cloudinary.com/dykocdlgk";
+
 const videos = [
   {
     id: 1,
     title: "Lāzerepilācijas Noslēpumi",
     category: "Beauty",
-    videoSrc: "/videos/showreel.mp4",
+    videoSrc: `${CLOUD}/video/upload/video/showreel.mp4`,
   },
   {
     id: 2,
     title: "Content Piece #1",
     category: "Lifestyle",
-    videoSrc: "/videos/content-piece-1.mp4",
+    videoSrc: `${CLOUD}/video/upload/video/content-piece-1.mp4`,
   },
   {
     id: 3,
     title: "Content Piece #2",
     category: "Lifestyle",
-    videoSrc: "/videos/content-piece-2.mp4",
+    videoSrc: `${CLOUD}/video/upload/video/content-piece-2.mp4`,
   },
   {
     id: 4,
     title: "Behind the Scenes",
     category: "BTS",
-    videoSrc: "/videos/behind-the-scenes.mp4",
+    videoSrc: `${CLOUD}/video/upload/video/behind-the-scenes.mp4`,
   },
   {
     id: 5,
     title: "Content Piece #3",
     category: "Lifestyle",
-    videoSrc: "/videos/img-1654.mp4",
+    videoSrc: `${CLOUD}/video/upload/video/img-1654.mp4`,
   },
   {
     id: 6,
     title: "Content Piece #4",
     category: "Lifestyle",
-    videoSrc: "/videos/img-2844.mp4",
+    videoSrc: `${CLOUD}/video/upload/video/img-2844.mp4`,
   },
   {
     id: 7,
     title: "Content Piece #5",
     category: "Lifestyle",
-    videoSrc: "/videos/img-4311.mp4",
+    videoSrc: `${CLOUD}/video/upload/video/img-4311.mp4`,
   },
 ];
 

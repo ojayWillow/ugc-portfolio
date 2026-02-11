@@ -73,7 +73,7 @@ export const Contact = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-sage-600/10 border border-sage-500/30 rounded-xl p-8 text-center"
           >
-            <div className="text-4xl mb-4">\u2728</div>
+            <div className="text-4xl mb-4">{"\u2728"}</div>
             <h3 className="text-xl font-semibold text-brand-900 mb-2">Message Sent!</h3>
             <p className="text-brand-700 mb-6">Thank you for reaching out. I&apos;ll get back to you soon!</p>
             <button

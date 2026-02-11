@@ -120,14 +120,6 @@ export const translations: Record<Locale, Record<string, any>> = {
       title: "Zīmolu sadarbības",
       description:
         "Lepojos ar sadarbību ar lieliskiem zīmoliem dažādās nozarēs.",
-      brands: [
-        { name: "Zīmols A", description: "Produkta laišanas UGC kampaņa" },
-        { name: "Zīmols B", description: "Sociālo tīklu satura sērija" },
-        { name: "Zīmols C", description: "Dzīvesstila fotogrāfija un reels" },
-        { name: "Zīmols D", description: "Izsaiņošanas un apskata video" },
-        { name: "Zīmols E", description: "Svētku kampaņas saturs" },
-        { name: "Zīmols F", description: "Zīmola vēstnieka programma" },
-      ],
     },
 
     // === SOCIAL PROOF ===
@@ -311,14 +303,6 @@ export const translations: Record<Locale, Record<string, any>> = {
       title: "Brand Collaborations",
       description:
         "Proud to have worked with amazing brands across multiple industries.",
-      brands: [
-        { name: "Brand A", description: "Product launch UGC campaign" },
-        { name: "Brand B", description: "Social media content series" },
-        { name: "Brand C", description: "Lifestyle photography & reels" },
-        { name: "Brand D", description: "Unboxing & review videos" },
-        { name: "Brand E", description: "Holiday campaign content" },
-        { name: "Brand F", description: "Brand ambassador program" },
-      ],
     },
 
     // === SOCIAL PROOF ===

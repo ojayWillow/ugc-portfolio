@@ -2,17 +2,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { GlowingCard } from "@/components/ui/glowing-card";
-
-const brands = [
-  { name: "Brand A", description: "Product launch UGC campaign", logo: "/brands/brand-a.svg" },
-  { name: "Brand B", description: "Social media content series", logo: "/brands/brand-b.svg" },
-  { name: "Brand C", description: "Lifestyle photography & reels", logo: "/brands/brand-c.svg" },
-  { name: "Brand D", description: "Unboxing & review videos", logo: "/brands/brand-d.svg" },
-  { name: "Brand E", description: "Holiday campaign content", logo: "/brands/brand-e.svg" },
-  { name: "Brand F", description: "Brand ambassador program", logo: "/brands/brand-f.svg" },
-];
+import { useLanguage } from "@/lib/language-context";
 
 export const BrandCollaborations = () => {
+  const { t } = useLanguage();
+  const brands = t.brandCollaborations.brands;
+
   return (
     <section id="brands" className="relative py-24 px-4 bg-brand-50">
       <div className="max-w-6xl mx-auto">
@@ -22,15 +17,15 @@ export const BrandCollaborations = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">Trusted By</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-brand-900">Brand Collaborations</h2>
+          <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">{t.brandCollaborations.subtitle}</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-brand-900">{t.brandCollaborations.title}</h2>
           <p className="mt-4 text-brand-700 max-w-lg mx-auto">
-            Proud to have worked with amazing brands across multiple industries.
+            {t.brandCollaborations.description}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {brands.map((brand, idx) => (
+          {brands.map((brand: any, idx: number) => (
             <motion.div
               key={brand.name}
               initial={{ opacity: 0, y: 30 }}

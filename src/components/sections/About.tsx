@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 const CLOUD = "https://res.cloudinary.com/dykocdlgk";
 
 export const About = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="relative py-16 md:py-24 px-4 bg-brand-50">
       <div className="max-w-4xl mx-auto">
@@ -28,38 +31,23 @@ export const About = () => {
 
           {/* Bio */}
           <div>
-            <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">About Me</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-900 mb-4 md:mb-6">Hey, I&apos;m Samanta \uD83D\uDC4B</h2>
+            <p className="text-sage-600 text-sm uppercase tracking-widest mb-2">{t.about.subtitle}</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-900 mb-4 md:mb-6">{t.about.title}</h2>
             <div className="space-y-3 md:space-y-4 text-brand-700 leading-relaxed text-sm md:text-base">
-              <p>
-                I&apos;m a UGC content creator passionate about crafting authentic,
-                relatable content that resonates with real audiences. With experience
-                across beauty, lifestyle, tech, and fashion niches, I bring brands
-                to life through genuine storytelling.
-              </p>
-              <p>
-                My content has generated over 2M+ views and helped 50+ brands
-                increase their engagement and conversion rates. I believe in
-                creating content that feels organic, not scripted.
-              </p>
-              <p className="hidden md:block">
-                When I&apos;m not creating, you&apos;ll find me exploring new coffee
-                shops, experimenting with photography, or planning my next creative
-                project.
-              </p>
+              <p>{t.about.bio[0]}</p>
+              <p>{t.about.bio[1]}</p>
+              <p className="hidden md:block">{t.about.bio[2]}</p>
             </div>
 
             <div className="mt-6 md:mt-8 flex flex-wrap gap-2">
-              {["UGC Videos", "Product Photography", "Brand Strategy", "Social Media", "Reels & TikTok", "Unboxing"].map(
-                (skill) => (
-                  <span
-                    key={skill}
-                    className="px-2.5 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-medium bg-sage-100 text-sage-700 border border-sage-200"
-                  >
-                    {skill}
-                  </span>
-                )
-              )}
+              {t.about.skills.map((skill: string) => (
+                <span
+                  key={skill}
+                  className="px-2.5 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-medium bg-sage-100 text-sage-700 border border-sage-200"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         </motion.div>

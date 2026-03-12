@@ -37,10 +37,11 @@ export const translations: Record<Locale, Record<string, any>> = {
       description:
         "Aizraujošs UGC saturs, kas veidots iesaistei un konversijai.",
       playing: "ATSKAŅO",
+      filterAll: "Visi",
       categories: {
         Beauty: "Skaistumkopšana",
-        Lifestyle: "Dzīvesstils",
-        BTS: "Aizkulises",
+        Accessories: "Aksesuāri",
+        Products: "Produkti",
       },
     },
 
@@ -120,18 +121,6 @@ export const translations: Record<Locale, Record<string, any>> = {
       title: "Zīmolu sadarbības",
       description:
         "Lepojos ar sadarbību ar lieliskiem zīmoliem dažādās nozarēs.",
-    },
-
-    // === SOCIAL PROOF ===
-    socialProof: {
-      subtitle: "Pierādījumi",
-      title: "Reāli rezultāti",
-      description:
-        "Skaitļi nemelo. Lūk, kas notiek, kad autentisks saturs satiek pareizo auditoriju.",
-      emptyTitle: "Katrs zīmola stāsts sākas kaut kur.",
-      emptyDescription:
-        "Padarīsim tavu projektu par nākamo veiksmes stāstu šajā sienā. Pirmais solis? Vienkārša saruna.",
-      emptyButton: "Esi pirmais stāsts",
     },
 
     // === ABOUT ===
@@ -220,10 +209,11 @@ export const translations: Record<Locale, Record<string, any>> = {
       description:
         "Scroll-stopping UGC crafted for engagement and conversion.",
       playing: "PLAYING",
+      filterAll: "All",
       categories: {
         Beauty: "Beauty",
-        Lifestyle: "Lifestyle",
-        BTS: "BTS",
+        Accessories: "Accessories",
+        Products: "Products",
       },
     },
 
@@ -303,18 +293,6 @@ export const translations: Record<Locale, Record<string, any>> = {
       title: "Brand Collaborations",
       description:
         "Proud to have worked with amazing brands across multiple industries.",
-    },
-
-    // === SOCIAL PROOF ===
-    socialProof: {
-      subtitle: "The Receipts",
-      title: "Real Results",
-      description:
-        "Numbers don't lie. Here's what happens when authentic content meets the right audience.",
-      emptyTitle: "Every brand story starts somewhere.",
-      emptyDescription:
-        "Let's make your project the next success story on this wall. The first step? A simple conversation.",
-      emptyButton: "Be the First Story",
     },
 
     // === ABOUT ===

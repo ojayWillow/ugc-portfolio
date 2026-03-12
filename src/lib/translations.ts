@@ -23,9 +23,9 @@ export const translations: Record<Locale, Record<string, any>> = {
       viewWork: "Skatīt manus darbus",
       collaborate: "Sadarbosimies",
       stats: [
-        { value: "50+", label: "Zīmolu sadarbības" },
-        { value: "2M+", label: "Skatījumi" },
-        { value: "100+", label: "Satura vienības" },
+        { value: "15+", label: "Zīmolu sadarbības" },
+        { value: "100k+", label: "Skatījumi" },
+        { value: "100+", label: "Radītie video" },
       ],
       scroll: "Ritini",
     },
@@ -129,7 +129,7 @@ export const translations: Record<Locale, Record<string, any>> = {
       title: "Čau, es esmu Samanta 👋",
       bio: [
         "Esmu UGC satura veidotāja, kas ar aizrautību veido autentisku, saistošu saturu, kas rezonē ar patiesām auditorijām. Ar pieredzi skaistumkopšanā, dzīvesstilā, tehnoloģijās un modē — es iedzīvinu zīmolus caur patiesu stāstīšanu.",
-        "Mans saturs ir sasniedzis vairāk nekā 2M+ skatījumu un palīdzējis 50+ zīmoliem palielināt iesaisti un konversiju rādītājus. Es ticu satura veidošanai, kas jūtas organisks, nevis iestudēts.",
+        "Mans saturs ir sasniedzis vairāk nekā 100k+ skatījumu un palīdzējis 15+ zīmoliem palielināt iesaisti un konversiju rādītājus. Es ticu satura veidošanai, kas jūtas organisks, nevis iestudēts.",
         "Kad neveidoju saturu, mani var atrast izpētot jaunas kafejnīcas, eksperimentējot ar fotogrāfiju vai plānojot nākamo radošo projektu.",
       ],
       skills: [
@@ -195,8 +195,8 @@ export const translations: Record<Locale, Record<string, any>> = {
       viewWork: "View My Work",
       collaborate: "Let's Collaborate",
       stats: [
-        { value: "50+", label: "Brand Collabs" },
-        { value: "2M+", label: "Views Generated" },
+        { value: "15+", label: "Brand Collabs" },
+        { value: "100k+", label: "Views Generated" },
         { value: "100+", label: "Content Pieces" },
       ],
       scroll: "Scroll",
@@ -301,7 +301,7 @@ export const translations: Record<Locale, Record<string, any>> = {
       title: "Hey, I'm Samanta 👋",
       bio: [
         "I'm a UGC content creator passionate about crafting authentic, relatable content that resonates with real audiences. With experience across beauty, lifestyle, tech, and fashion niches, I bring brands to life through genuine storytelling.",
-        "My content has generated over 2M+ views and helped 50+ brands increase their engagement and conversion rates. I believe in creating content that feels organic, not scripted.",
+        "My content has generated over 100k+ views and helped 15+ brands increase their engagement and conversion rates. I believe in creating content that feels organic, not scripted.",
         "When I'm not creating, you'll find me exploring new coffee shops, experimenting with photography, or planning my next creative project.",
       ],
       skills: [

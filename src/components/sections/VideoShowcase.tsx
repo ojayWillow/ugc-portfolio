@@ -16,46 +16,49 @@ const videos = [
   {
     id: 2,
     title: "Content Piece #1",
-    category: "Lifestyle",
+    category: "Beauty",
     videoSrc: `${CLOUD}/video/upload/content-piece-1_cz8lrc.mp4`,
     poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/content-piece-1_cz8lrc.jpg`,
   },
   {
     id: 3,
     title: "Content Piece #2",
-    category: "Lifestyle",
+    category: "Beauty",
     videoSrc: `${CLOUD}/video/upload/content-piece-2_t7uutw.mp4`,
     poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/content-piece-2_t7uutw.jpg`,
   },
   {
     id: 4,
     title: "Behind the Scenes",
-    category: "BTS",
+    category: "Beauty",
     videoSrc: `${CLOUD}/video/upload/behind-the-scenes_setjyx.mp4`,
     poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/behind-the-scenes_setjyx.jpg`,
   },
   {
     id: 5,
     title: "Content Piece #3",
-    category: "Lifestyle",
+    category: "Accessories",
     videoSrc: `${CLOUD}/video/upload/img-1654_ppz5k6.mp4`,
     poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/img-1654_ppz5k6.jpg`,
   },
   {
     id: 6,
     title: "Content Piece #4",
-    category: "Lifestyle",
+    category: "Accessories",
     videoSrc: `${CLOUD}/video/upload/img-2844_b5qzjs.mp4`,
     poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/img-2844_b5qzjs.jpg`,
   },
   {
     id: 7,
     title: "Content Piece #5",
-    category: "Lifestyle",
+    category: "Products",
     videoSrc: `${CLOUD}/video/upload/img-4311_xcimbv.mp4`,
     poster: `${CLOUD}/video/upload/so_2,w_480,c_fill,g_auto,f_jpg,q_80/img-4311_xcimbv.jpg`,
   },
 ];
+
+const ALL_CATEGORIES = ["All", "Beauty", "Accessories", "Products"] as const;
+type Category = typeof ALL_CATEGORIES[number];
 
 const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: number; size: "tall" | "medium" | "short"; t: Record<string, any> }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -110,7 +113,6 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
       className={`group relative ${heights[size]} md:${heights[size]} rounded-2xl overflow-hidden bg-brand-900 border border-brand-300/30 cursor-pointer hover:border-sage-400/40 transition-all duration-500 hover:shadow-[0_0_40px_rgba(125,168,122,0.1)]`}
       onClick={togglePlay}
     >
-      {/* Poster thumbnail image */}
       <img
         src={video.poster}
         alt={video.title}
@@ -144,10 +146,8 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
         }}
       />
 
-      {/* Gradient overlay — lighter for better thumbnail visibility */}
       <div className="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-brand-900/5 z-10 pointer-events-none" />
 
-      {/* Play/Pause icon — center */}
       <div className={`absolute inset-0 flex items-center justify-center z-20 transition-opacity duration-500 pointer-events-none ${
         isPlaying ? "opacity-0" : "opacity-100"
       }`}>
@@ -158,7 +158,6 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
         </div>
       </div>
 
-      {/* Playing indicator */}
       <div className={`absolute top-2 right-2 md:top-3 md:right-3 z-20 transition-opacity duration-300 pointer-events-none ${
         isPlaying ? "opacity-100" : "opacity-0"
       }`}>
@@ -168,7 +167,6 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
         </div>
       </div>
 
-      {/* Audio toggle button */}
       <button
         onClick={toggleMute}
         className="absolute bottom-14 right-3 z-30 w-8 h-8 md:w-9 md:h-9 rounded-full bg-brand-900/40 backdrop-blur-sm flex items-center justify-center border border-brand-50/20 hover:bg-brand-900/60 transition-colors"
@@ -186,7 +184,6 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
         )}
       </button>
 
-      {/* Fullscreen button */}
       <button
         onClick={goFullscreen}
         className="absolute bottom-14 left-3 z-30 w-8 h-8 md:w-9 md:h-9 rounded-full bg-brand-900/40 backdrop-blur-sm flex items-center justify-center border border-brand-50/20 hover:bg-brand-900/60 transition-colors"
@@ -197,14 +194,12 @@ const VideoCard = ({ video, idx, size, t }: { video: typeof videos[0]; idx: numb
         </svg>
       </button>
 
-      {/* Category pill */}
       <div className="absolute top-2 left-2 md:top-3 md:left-3 z-20 pointer-events-none">
         <span className="px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[9px] md:text-[10px] font-semibold uppercase tracking-wider bg-brand-50/20 text-white/90 backdrop-blur-sm border border-brand-50/20">
           {categoryLabel}
         </span>
       </div>
 
-      {/* Title */}
       <div className="absolute bottom-0 left-0 right-0 z-20 p-3 md:p-5 pointer-events-none">
         <div className="w-8 h-[2px] bg-sage-500 mb-2 md:mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <h3 className="text-white font-semibold text-sm md:text-base leading-tight">
@@ -221,18 +216,22 @@ const desktopRowSizes: ("tall" | "medium" | "short")[][] = [
   ["tall", "medium"],
 ];
 
-const rows = [
-  { items: videos.slice(0, 3) },
-  { items: videos.slice(3, 5) },
-  { items: videos.slice(5, 7) },
-];
-
 export const VideoShowcase = () => {
   const { t } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState<Category>("All");
+
+  const filteredVideos = activeFilter === "All"
+    ? videos
+    : videos.filter((v) => v.category === activeFilter);
+
+  const rows = [
+    { items: filteredVideos.slice(0, 3) },
+    { items: filteredVideos.slice(3, 5) },
+    { items: filteredVideos.slice(5, 7) },
+  ];
 
   return (
     <section id="videos" className="relative py-16 md:py-24 bg-brand-50 overflow-hidden">
-      {/* Background ambient glows */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-sage-300/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand-400/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -241,7 +240,7 @@ export const VideoShowcase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 md:mb-20 px-4"
+          className="text-center mb-8 md:mb-14 px-4"
         >
           <p className="text-sage-600 text-sm uppercase tracking-[0.2em] mb-3">
             {t.videoShowcase.subtitle}
@@ -254,40 +253,68 @@ export const VideoShowcase = () => {
           </p>
         </motion.div>
 
+        {/* Filter Buttons */}
+        <div className="flex justify-center gap-2 flex-wrap px-4 mb-10 md:mb-14">
+          {ALL_CATEGORIES.map((cat) => {
+            const label = cat === "All"
+              ? t.videoShowcase.filterAll
+              : (t.videoShowcase.categories[cat] || cat);
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-300 ${
+                  activeFilter === cat
+                    ? "bg-brand-900 text-white border-brand-900"
+                    : "bg-transparent text-brand-700 border-brand-300 hover:border-brand-600 hover:text-brand-900"
+                }`}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Mobile: 2-column compact grid */}
         <div className="md:hidden max-w-lg mx-auto px-3">
           <div className="grid grid-cols-2 gap-3">
-            {videos.map((video, idx) => (
+            {filteredVideos.map((video, idx) => (
               <VideoCard key={video.id} video={video} idx={idx} size="tall" t={t} />
             ))}
           </div>
         </div>
 
-        {/* Desktop: staggered layout — tighter padding */}
+        {/* Desktop: staggered layout */}
         <div className="hidden md:block max-w-5xl mx-auto px-4 space-y-5">
-          <div className="grid grid-cols-3 gap-5 items-start">
-            {rows[0].items.map((video, idx) => (
-              <div key={video.id} className={idx === 1 ? "mt-12" : ""}>
-                <VideoCard video={video} idx={idx} size={desktopRowSizes[0][idx]} t={t} />
-              </div>
-            ))}
-          </div>
+          {rows[0].items.length > 0 && (
+            <div className="grid grid-cols-3 gap-5 items-start">
+              {rows[0].items.map((video, idx) => (
+                <div key={video.id} className={idx === 1 ? "mt-12" : ""}>
+                  <VideoCard video={video} idx={idx} size={desktopRowSizes[0][idx]} t={t} />
+                </div>
+              ))}
+            </div>
+          )}
 
-          <div className="grid grid-cols-2 gap-5 px-8 items-start">
-            {rows[1].items.map((video, idx) => (
-              <div key={video.id} className={idx === 0 ? "mt-8" : "-mt-4"}>
-                <VideoCard video={video} idx={idx + 3} size={desktopRowSizes[1][idx]} t={t} />
-              </div>
-            ))}
-          </div>
+          {rows[1].items.length > 0 && (
+            <div className="grid grid-cols-2 gap-5 px-8 items-start">
+              {rows[1].items.map((video, idx) => (
+                <div key={video.id} className={idx === 0 ? "mt-8" : "-mt-4"}>
+                  <VideoCard video={video} idx={idx + 3} size={desktopRowSizes[1][idx]} t={t} />
+                </div>
+              ))}
+            </div>
+          )}
 
-          <div className="grid grid-cols-2 gap-5 px-4 items-start">
-            {rows[2].items.map((video, idx) => (
-              <div key={video.id} className={idx === 1 ? "mt-16" : ""}>
-                <VideoCard video={video} idx={idx + 5} size={desktopRowSizes[2][idx]} t={t} />
-              </div>
-            ))}
-          </div>
+          {rows[2].items.length > 0 && (
+            <div className="grid grid-cols-2 gap-5 px-4 items-start">
+              {rows[2].items.map((video, idx) => (
+                <div key={video.id} className={idx === 1 ? "mt-16" : ""}>
+                  <VideoCard video={video} idx={idx + 5} size={desktopRowSizes[2][idx]} t={t} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
